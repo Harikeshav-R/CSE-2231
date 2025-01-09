@@ -1,3 +1,5 @@
+# Homework 2
+
 The test plan for the `smooth` method with test cases added can be found below:
 
 ```java
