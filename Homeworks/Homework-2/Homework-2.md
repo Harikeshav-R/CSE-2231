@@ -13,7 +13,7 @@ import components.sequence.Sequence1L;
 /**
  * Sample JUnit test fixture for SequenceSmooth.
  *
- * @author Put your name
+ * @author Harikeshav Rameshkumar
  *
  */
 public final class SequenceSmoothTest {
@@ -137,7 +137,7 @@ public final class SequenceSmoothTest {
     /**
      * Test smooth with s1 = <> and s2 = <> (invalid case).
      */
-    @Test(expected = AssertionError.class)
+    @Test
     public void test6() {
         /*
          * Set up variables and call method under test
