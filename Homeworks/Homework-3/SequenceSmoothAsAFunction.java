@@ -20,7 +20,7 @@ public final class SequenceSmooth {
    * @param sequence
    *                 the sequence to smooth
    * @return outputSequence
-   *                 the resulting sequence
+   *         the resulting sequence
    * @requires |s1| >= 1
    * @ensures
    * 
