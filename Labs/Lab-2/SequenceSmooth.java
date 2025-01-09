@@ -40,21 +40,21 @@ public final class SequenceSmooth {
     assert s1 != s2 : "Violation of: s1 is not s2";
     assert s1.length() >= 1 : "Violation of: |s1| >= 1";
 
-    // TODO - fill in body
-
     s2.clear();
 
-    // smoothRecursiveHelper(s1, s2);
-    smoothIterativeHelper(s1, s2);
+    smoothRecursiveHelper(s1, s2, 0);
+    // smoothIterativeHelper(s1, s2);
   }
 
   /**
    * Recursive implementation for smoothing a given {@code Sequence<Integer>}.
    *
    * @param s1
-   *           the sequence to smooth
+   *              the sequence to smooth
    * @param s2
-   *           the resulting sequence
+   *              the resulting sequence
+   * @param index
+   *              the current index in s1 to process
    * @replaces s2
    * @requires |s1| >= 1
    * @ensures
@@ -68,21 +68,15 @@ public final class SequenceSmooth {
    *        s2 = c * <(i+j)/2> * d))
    *          </pre>
    */
-  private static void smoothRecursiveHelper(Sequence<Integer> s1,
-      Sequence<Integer> s2) {
-    if (s1.length() <= 1) {
+  private static void smoothRecursiveHelper(Sequence<Integer> s1, Sequence<Integer> s2,
+      int index) {
+    if (index >= s1.length() - 1) {
       return;
-    } else {
-      int last = s1.remove(s1.length() - 1);
-      int secondLast = s1.remove(s1.length() - 1);
-
-      s2.add(0, (last + secondLast) / 2);
-      s1.add(s1.length(), secondLast);
-
-      smoothRecursiveHelper(s1, s2);
-
-      s1.add(s1.length(), last);
     }
+
+    int avg = (s1.entry(index) + s1.entry(index + 1)) / 2;
+    s2.add(s2.length(), avg);
+    smoothRecursiveHelper(s1, s2, index + 1);
   }
 
   /**
@@ -107,25 +101,9 @@ public final class SequenceSmooth {
    */
   private static void smoothIterativeHelper(Sequence<Integer> s1,
       Sequence<Integer> s2) {
-    Sequence<Integer> temp = s1.newInstance();
-
-    while (s1.length() > 0) {
-      temp.add(temp.length(), s1.remove(0));
-    }
-
-    while (temp.length() > 1) {
-      int first = temp.remove(0);
-      int second = temp.remove(0);
-
-      int avg = (first + second) / 2;
-
-      temp.add(0, second);
-      s1.add(s1.length(), first);
+    for (int i = 0; i < s1.length() - 1; i++) {
+      int avg = (s1.entry(i) + s1.entry(i + 1)) / 2;
       s2.add(s2.length(), avg);
-    }
-
-    while (temp.length() > 0) {
-      s1.add(s1.length(), temp.remove(0));
     }
   }
 }
