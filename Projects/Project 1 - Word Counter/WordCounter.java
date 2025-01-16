@@ -175,16 +175,16 @@ public final class WordCounter {
     writer.println("<html lang=\"en\">");
     writer.println("<head>");
     writer.println("<meta charset=\"UTF-8\">");
-    writer.println(
-        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+    writer.println("<meta name=\"viewport\" "
+        + "content=\"width=device-width, initial-scale=1.0\">");
     writer.println("<title>Word Count</title>");
     writer.println("<style>");
-    writer.println(
-        "body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #343a40; }");
-    writer.println(
-        "header { background-color: #007bff; color: white; padding: 20px; text-align: center; }");
-    writer.println(
-        "table { border-collapse: collapse; width: 80%; margin: 20px auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }");
+    writer.println("body { font-family: Arial, sans-serif; margin: 0; padding: 0;"
+        + " background-color: #f8f9fa; color: #343a40; }");
+    writer.println("header { background-color: #007bff; color: white; "
+        + "padding: 20px; text-align: center; }");
+    writer.println("table { border-collapse: collapse; width: 80%; "
+        + "margin: 20px auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }");
     writer.println(
         "th, td { padding: 12px; text-align: left; border: 1px solid #dee2e6; }");
     writer.println("th { background-color: #007bff; color: white; }");
@@ -216,5 +216,8 @@ public final class WordCounter {
     writer.println("</main>");
     writer.println("</body>");
     writer.println("</html>");
+
+    writer.close();
   }
 }
+
