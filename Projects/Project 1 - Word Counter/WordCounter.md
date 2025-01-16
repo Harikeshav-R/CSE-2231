@@ -1,3 +1,5 @@
+## **WordCounter.java**
+
 ```java
 import java.nio.file.Paths;
 import java.util.Comparator;
