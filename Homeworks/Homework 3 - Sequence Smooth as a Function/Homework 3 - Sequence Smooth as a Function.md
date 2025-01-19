@@ -1,4 +1,4 @@
-# Homework 3
+# Homework 3 - Sequence Smooth as a Function
 
 The code below contains the reimplementation of the smooth function that now returns the new smoothed sequence instead of replacing a parameter.
 It also contains two distinct implementations of the new smooth method, one of which uses recursion, while the other uses iteration.

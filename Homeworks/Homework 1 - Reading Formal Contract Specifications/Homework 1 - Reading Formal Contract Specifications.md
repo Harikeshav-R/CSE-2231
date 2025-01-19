@@ -1,3 +1,5 @@
+# Homework 1 - Reading Formal Contract Specifications
+
 1. **Suppose `seq1 = <2, 4, 6>` and `seq2 = <-5, 12>`. What are the values of `seq1` and `seq2` after the call `smooth(seq1, seq2)`?**
 
    - **ANswer**:

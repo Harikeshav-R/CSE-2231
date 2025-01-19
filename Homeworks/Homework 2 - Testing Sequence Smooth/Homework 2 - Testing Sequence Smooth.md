@@ -1,4 +1,4 @@
-# Homework 2
+# Homework 2 - Testing Sequence Smooth
 
 The test plan for the `smooth` method with test cases added can be found below:
 
