@@ -6,23 +6,18 @@
 private static <T> void setLengthOfLeftStack(Stack<T> leftStack, Stack<T> rightStack, int newLeftLength) {
     int currentLeftLength = leftStack.size();
 
-    // If the current length of leftStack is greater than the desired length
     if (currentLeftLength > newLeftLength) {
-        // Move items from leftStack to rightStack
         while (currentLeftLength > newLeftLength) {
             rightStack.push(leftStack.pop());
             currentLeftLength--;
         }
     }
-    // If the current length of leftStack is less than the desired length
     else if (currentLeftLength < newLeftLength) {
-        // Move items from rightStack to leftStack
         while (currentLeftLength < newLeftLength) {
             leftStack.push(rightStack.pop());
             currentLeftLength++;
         }
     }
-    // If the lengths are equal, do nothing
 }
 ```
 
