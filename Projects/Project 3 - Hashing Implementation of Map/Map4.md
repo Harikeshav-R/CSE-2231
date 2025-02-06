@@ -38,7 +38,7 @@ import components.map.MapSecondary;
  *          (pf)
  * </pre>
  *
- * @author Praj Sachan, Hari Rameshkumar
+ * @author Put your name here
  *
  */
 public class Map4<K, V> extends MapSecondary<K, V> {
@@ -105,12 +105,18 @@ public class Map4<K, V> extends MapSecondary<K, V> {
          */
         assert hashTableSize > 0 : "Violation of: hashTableSize > 0";
 
+        // Ensures the hash table size is greater than zero.
+        assert hashTableSize > 0 : "Violation of: hashTableSize > 0";
+
+        // Initializes the hash table array with the given size.
         this.hashTable = new Map[hashTableSize];
 
+        // Iterates through the array and initializes each bucket as an empty map.
         for (int i = 0; i < hashTableSize; i++) {
             this.hashTable[i] = new Map2<>();
         }
 
+        // Sets the total size of the map to zero.
         this.size = 0;
 
     }
@@ -185,8 +191,13 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert value != null : "Violation of: value is not null";
         assert !this.hasKey(key) : "Violation of: key is not in DOMAIN(this)";
 
+        // Computes the index of the appropriate bucket using the hash code of the key.
         int i = mod(key.hashCode(), this.hashTable.length);
+
+        // Adds the key-value pair to the corresponding bucket.
         this.hashTable[i].add(key, value);
+
+        // Increments the total size of the map.
         this.size++;
 
     }
@@ -196,9 +207,16 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert key != null : "Violation of: key is not null";
         assert this.hasKey(key) : "Violation of: key is in DOMAIN(this)";
 
+        // Computes the index of the appropriate bucket using the key's hash code.
         int i = mod(key.hashCode(), this.hashTable.length);
+
+        // Removes the key-value pair from the corresponding bucket.
         Map.Pair<K, V> pair = this.hashTable[i].remove(key);
+
+        // Decrements the total size of the map.
         this.size--;
+
+        // Returns the removed key-value pair.
         return pair;
     }
 
@@ -206,14 +224,20 @@ public class Map4<K, V> extends MapSecondary<K, V> {
     public final Pair<K, V> removeAny() {
         assert this.size() > 0 : "Violation of: this /= empty_set";
 
-        int i = 0;
+        int i = 0; // Start from the first bucket.
 
+        // Find the first non-empty bucket by iterating through the hash table.
         while (this.hashTable[i].size() == 0) {
             i++;
         }
 
+        // Removes an arbitrary key-value pair from the first non-empty bucket.
         Map.Pair<K, V> pair = this.hashTable[i].removeAny();
+
+        // Decrements the total size of the map.
         this.size--;
+
+        // Returns the removed key-value pair.
         return pair;
     }
 
@@ -222,7 +246,13 @@ public class Map4<K, V> extends MapSecondary<K, V> {
         assert key != null : "Violation of: key is not null";
         assert this.hasKey(key) : "Violation of: key is in DOMAIN(this)";
 
+        // Ensures the key exists in the map before retrieving its value.
+        assert this.hasKey(key) : "Violation of: key is in DOMAIN(this)";
+
+        // Computes the index of the appropriate bucket using the key's hash code.
         int i = mod(key.hashCode(), this.hashTable.length);
+
+        // Retrieves and returns the value associated with the given key.
         return this.hashTable[i].value(key);
     }
 
@@ -230,12 +260,16 @@ public class Map4<K, V> extends MapSecondary<K, V> {
     public final boolean hasKey(K key) {
         assert key != null : "Violation of: key is not null";
 
+        // Computes the index of the appropriate bucket using the key's hash code.
         int i = mod(key.hashCode(), this.hashTable.length);
+
+        // Checks if the key is present in the corresponding bucket.
         return this.hashTable[i].hasKey(key);
     }
 
     @Override
     public final int size() {
+        // Returns the total number of key-value pairs in the map.
         return this.size;
     }
 
@@ -305,4 +339,5 @@ public class Map4<K, V> extends MapSecondary<K, V> {
     }
 
 }
+
 ```
