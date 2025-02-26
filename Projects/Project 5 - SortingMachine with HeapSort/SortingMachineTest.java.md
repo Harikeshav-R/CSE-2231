@@ -322,6 +322,24 @@ public abstract class SortingMachineTest {
     }
 
     /*
+     * Removing from a multiple-element machine.
+     */
+    @Test
+    public final void testRemoveFirstFromMultipleElementMachine() {
+        SortingMachine<String> m = this.createFromArgsTest(ORDER, false, "green", "blue",
+                "yellow");
+        SortingMachine<String> mExpected = this.createFromArgsRef(ORDER, false, "green",
+                "blue", "yellow");
+        assertEquals(mExpected, m);
+
+        String first = m.removeFirst();
+        String expectedFirst = mExpected.removeFirst();
+
+        assertEquals(expectedFirst, first);
+        assertEquals(mExpected, m);
+    }
+
+    /*
      * Removing until machine is empty.
      */
     @Test
@@ -332,15 +350,14 @@ public abstract class SortingMachineTest {
                 "blue", "yellow");
         assertEquals(mExpected, m);
 
-        m.removeFirst();
-        m.removeFirst();
-        m.removeFirst();
-
-        mExpected.removeFirst();
-        mExpected.removeFirst();
-        mExpected.removeFirst();
+        assertEquals(mExpected.removeFirst(), m.removeFirst());
+        assertEquals(mExpected.removeFirst(), m.removeFirst());
+        assertEquals(mExpected.removeFirst(), m.removeFirst());
 
         assertEquals(mExpected, m);
+
+        assertThrows(AssertionError.class, () -> m.removeFirst());
+        assertThrows(AssertionError.class, () -> mExpected.removeFirst());
     }
 
     /*
